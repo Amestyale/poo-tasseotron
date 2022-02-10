@@ -27,7 +27,7 @@ Connaissez-vous cette situation où vous vous faites chauffer un café ou un th�
 
 Si vous partagez cette douleur des tasses froides, séchez vos larmes et venez découvrir le tasse-o-tron, l'ami qui veillera sur votre précieux élixir !
 
-## Je serais vos yeux et votre thermomètre ʕ•ᴥ•ʔ
+## Je serai vos yeux et votre thermomètre ʕ•ᴥ•ʔ
 Le tasse-o-tron est un support de tasse qui détecte en continu sa température, et vous avertit dès que la température que vous jugez optimale est atteinte. Car oui, le tasse-o-tron ne prétend pas connaître vos goûts, il vous laisse choisir ce qui est bon pour vous ! Le processus est simple :
 1. Allumez le tasse-o-tron
 2. Réglez la température à laquelle vous aimez boire votre café/thé/tisane/chocolat
