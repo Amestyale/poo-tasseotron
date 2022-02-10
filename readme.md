@@ -39,7 +39,7 @@ Le tasse-o-tron est un support de tasse qui détecte en continu sa température,
 ## Build me please (∩｀-´)⊃━☆ﾟ.*･｡ﾟ
 Voici les composants nécessaires à la construction du tasse-o-tron
 | Composant         | Rôle          |
-| :----:            |    :----:     | 
+| :----:            |    :---    | 
 | ESP32            | MicroContrôleur         |
 | Jauge à LED         | Indicateur de la température actuelle de la boisson, sur base de pourcentage | 
 | DHT11       | Capteur de température, qui détecte celle de la boisson posée | 
