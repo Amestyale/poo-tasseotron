@@ -1,3 +1,27 @@
+/*
+++++++++++++++++++++++++++++++++++++++++++++
++++++                                  +++++
+++++    ####  ###  ##### ##### #####    ++++
++++      ##  ## ## ##    ##    ##        +++
+++       ##  ##### ##### ##### ###        ++
++        ##  #   #    ##    ## ##          +
++        ##  #   # ##### ##### #####       +
++                                          +
++                 #####                    +
++                 ## ##                    +
++        -O0O-    ## ##    -O0O-           +
++                 ## ##                    +
++                 #####                    +
++                                          +
++         #### ##### ##### ##  #           +
++          ##  ##  # ## ## ##  #           +
+++         ##  ####  ## ## # # #          ++
++++        ##  ##  # ## ## #  ##         +++
+++++       ##  ##  # ##### #  ##        ++++
++++++                                  +++++
+++++++++++++++++++++++++++++++++++++++++++++
+*/
+
 
 #include "DHT.h"
 #include <LiquidCrystal_I2C.h>
@@ -15,8 +39,8 @@ DHT dht(DHTPIN, DHTTYPE);
 WiFiMulti wifiMulti;
 
 // IDENTIFIANTS WIFI
-const char* WIFI_LOGIN = "ADE-WIFI-ETUDIANTS";
-const char* WIFI_PASSWORD = "wifi@ade2018";
+const char* WIFI_LOGIN = "###############";
+const char* WIFI_PASSWORD = "############";
 
 // NOMBRE ET PINS DES LEDS DE LA JAUGE A LED
 const int NB_JAUGE_LEDS =10;
