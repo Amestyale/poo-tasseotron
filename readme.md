@@ -37,6 +37,7 @@ Le tasse-o-tron est un support de tasse qui détecte en continu sa température,
 4. Éteignez le tasse-o-tron s'il n'est plus utilisé, c'est pas Versaille ici ʕ •́؈•̀ ₎ 
 
 ## Build me please (∩｀-´)⊃━☆ﾟ.*･｡ﾟ
+### Matériel
 Voici les composants nécessaires à la construction du tasse-o-tron
 | Composant         | Rôle          |
 | :----:            |    :---    | 
@@ -46,3 +47,12 @@ Voici les composants nécessaires à la construction du tasse-o-tron
 | Ecran LCD      | Ecran qui affiche des messages d'informations, notamment lors de l'initialisation, puis la température idéale sélectionnée | 
 | Potentiomètre | Tourner le potentiomètre permet de modifier la température à laquelle vous souhaitez être notifié |
 | Photorésistance | Détecte la luminosité, qui servira à déterminer si une tasse est posée ou non sur le support |
+### Librairies
+Certaines librairies sont nécessaires pour assurer le bon fonctionnement du produit
+| Librairie         | Embarquée dans ArduinoIDE          |
+| :---            |    :---    | 
+| Arduino            | Oui         |
+| DHT            | Oui         |
+| LiquidCrystal            | Non (liquid_crystal.zip)         |
+| WiFi            | Oui         |
+| WiFiMulti            | Oui         |
