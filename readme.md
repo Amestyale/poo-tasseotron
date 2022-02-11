@@ -53,7 +53,7 @@ Certaines librairies sont nécessaires pour assurer le bon fonctionnement du pro
 | :---            |    :---    | 
 | Arduino            | Oui         |
 | DHT            | Oui         |
-| LiquidCrystal            | Non (liquid_crystal.zip)         |
+| LiquidCrystal            | Non [(liquid_crystal.zip)](./liquid_crystal.zip)        |
 | WiFi            | Oui         |
 | WiFiMulti            | Oui         |
 ### Branchements
