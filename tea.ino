@@ -39,18 +39,19 @@ DHT dht(DHTPIN, DHTTYPE);
 WiFiMulti wifiMulti;
 
 // IDENTIFIANTS WIFI
-const char* WIFI_LOGIN = "###############";
-const char* WIFI_PASSWORD = "############";
+const char* WIFI_LOGIN = "##################";
+const char* WIFI_PASSWORD = "##################";
 
 // NOMBRE ET PINS DES LEDS DE LA JAUGE A LED
 const int NB_JAUGE_LEDS =10;
 const double JAUGE_LEDS[NB_JAUGE_LEDS] = {15,32,25, 26,27,14,16,17,18,19};
 
 // ANALYSE DE LA TEMPERATURE
-const float MIN_CELSIUS = 10;
+const float MIN_CELSIUS = 0;
 const float MAX_CELSIUS = 50;
-const int HISTORIC_CELSIUS_SIZE = 10;
-float historic_celsius[HISTORIC_CELSIUS_SIZE] = {0,0,0,0,0,0,0,0,0,0};
+float max_temp_memory = 0.0;
+float max_temp = 0.0;
+float real_temp = false;
 
 // NOMBRE DE LIGNES ET COLONNES DE L'ECRAN
 const int NB_LCD_COLUMNS = 16;
@@ -65,11 +66,8 @@ const int PIN_LUM = 35;
 // POTENTIOMETRE
 const int PIN_BUTTON = 34;
 
-// NOMBRE D'ITERATIONS DURANT LESQUELS LA TASSE EST POSEE
-int scdPosed = 0;
-
 // NOTIFICATION
-const char* MSG_URL = "https://maker.ifttt.com/trigger/temp_goal/with/key/########?value1=";
+const char* MSG_URL = "https://maker.ifttt.com/trigger/temp_goal/with/key/##################?value1=";
 boolean msgSent = 0;
 
 void setup(){
@@ -88,12 +86,12 @@ void loop(){
   int goal = goaltemp();
   int lum = analogRead(PIN_LUM);
   float t = dht.readTemperature();
-  
+  Serial.print("t : ");
+  Serial.println(t);
   screen(goal, lum);
   histo_temp(t);
   light_jauge(calc_percent_celsius(t));
   need_to_notify(lum, goal, t);
-  delay(1000);
 }
 
 // !----- FONCTIONS DE L'ECRAN -----!
@@ -121,7 +119,7 @@ void screen(int goal, int lum){
   lcd.print("C");
 
   lcd.setCursor(9, 1);
-  lcd.print( (lum < 100) ? " ON" : "OFF" );
+  lcd.print( (lum < 10) ? " ON" : "OFF" );
 }
 
 // Afficher la seconde ligne de l'écran (wifi connecté)
@@ -177,7 +175,7 @@ void verif_leds()
 {
   for (int i = 0; i < NB_JAUGE_LEDS; i++ ){
     digitalWrite(JAUGE_LEDS[i], HIGH);
-    delay(500);
+    delay(1200/NB_JAUGE_LEDS);
   }
   
   flash_jauge(5);
@@ -186,17 +184,18 @@ void verif_leds()
 void need_to_notify(int lum, int goal, float temperature)
 {
   if(lum<100){
-    scdPosed += 1;
-    Serial.println("TASS-O-TRON RECOUVERT ʕ•3•ʔ");
-    if(scdPosed > 10 &&  temperature <= goal && msgSent == 0){
-      Serial.println("!----------------------------------------!");
-      Serial.println("Sending message");
-      Serial.println("!----------------------------------------!");
-      sendSlackMsg(goal); 
+    if(real_temp){
+      max_temp_memory = temperature;
+      if(temperature <= goal && msgSent == 0){
+        Serial.println("!----------------------------------------!");
+        Serial.println("Sending message");
+        Serial.println("!----------------------------------------!");
+        sendSlackMsg(goal); 
+      }
     }
   } else {
-    if(scdPosed > 0)Serial.println("TASS-O-TRON PRIVÉ DE SA TASSE ʕ•`3•´ʔ ");
-    scdPosed = 0;
+    max_temp = false;
+    real_temp = false;
   }
 }
 // !----- FIN DES FONCTIONS DE VERIFICATION -----!
@@ -228,14 +227,18 @@ int goaltemp(){
 
 // SAUVEGARDE DE LA TEMPERATURE
 int histo_temp(float t){
-  Serial.println();
-  for(int i = 1; i < HISTORIC_CELSIUS_SIZE; i++){
-    historic_celsius[i-1] = historic_celsius[i];
-    Serial.print(historic_celsius[i-1]);
-    Serial.print(" | ");
+  if(t>max_temp){
+    max_temp = t;
+  } else if(t < max_temp - 0.10 && !real_temp){
+    if(t >= max_temp_memory + 1) msgSent = 0;
+    max_temp_memory = t;
+    real_temp = true;
+        Serial.println("!----------------------------------------!");
+        Serial.println("PIC ATTEINT");
+        Serial.println(max_temp);
+        Serial.println(t);
+        Serial.println("!----------------------------------------!");
   }
-  historic_celsius[HISTORIC_CELSIUS_SIZE-1] = t;
-  Serial.println();
 }
 // !----- FIN DES FONCTIONS DE CALCUL -----!
 

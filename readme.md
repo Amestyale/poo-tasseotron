@@ -73,6 +73,6 @@ Le tasse-o-tron utilise une connexion wifi pour envoyer sa notification, il faut
 ![Code wifi](./wifi.png)
 
 ### Notification
-Pour envoyer la notification indiquant que la boisson est à température optimale, le site [ifttt](https://ifttt.com/create) est utilisé. Créez votre propre évènement en utilisant un webhook pour le **if then**, et un système de messagerie de votre choix pour le **then that**. Copiez-collez l'url du webhook dans la constante MSG_URL;
+Pour envoyer la notification indiquant que la boisson est à température optimale, le site [ifttt](https://ifttt.com/create) est utilisé. Créez votre propre évènement en utilisant un webhook pour le **if then**, et un système de messagerie de votre choix pour le **then that**. Copiez-collez l'url du webhook dans la constante MSG_URL
 
 ![Url IFTTT](./msg_const.png)
