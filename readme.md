@@ -58,3 +58,8 @@ Certaines librairies sont nécessaires pour assurer le bon fonctionnement du pro
 | WiFiMulti            | Oui         |
 ### Branchements
 ![Cablage des composants](./cablage.jpg)
+
+Les pins des éléments sont modifiables, il faudra simplement penser à changer les constantes associées dans le code.
+> :warning: Pour les pins en INPUT, il est nécessaire de faire le branchement sur un pin **ADC1**, les pins ADC2 en input et le module wifi ne peuvent pas fonctionner simultanéments
+
+![ESP32 pins](./esp32.png)
