@@ -69,4 +69,5 @@ Comme mentionné ci-haut, pensez à mettre le bon numéros de pin dans les const
 
 #### Identifiants WIFI
 Le tasse-o-tron utilise une connexion wifi pour envoyer sa notification, il faut donc lui fournir l'identifiant et le mot de passe pour s'y connecter
+
 ![Code wifi](./wifi.png)
