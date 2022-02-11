@@ -56,3 +56,5 @@ Certaines librairies sont nécessaires pour assurer le bon fonctionnement du pro
 | LiquidCrystal            | Non (liquid_crystal.zip)         |
 | WiFi            | Oui         |
 | WiFiMulti            | Oui         |
+### Branchements
+![Cablage des composants](./cablage.jpg)
