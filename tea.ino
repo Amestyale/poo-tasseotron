@@ -68,7 +68,8 @@ const int PIN_BUTTON = 34;
 // NOMBRE D'ITERATIONS DURANT LESQUELS LA TASSE EST POSEE
 int scdPosed = 0;
 
-// EST-CE QUE LE MESSAGE A DEJA ETE ENVOYE
+// NOTIFICATION
+const char* MSG_URL = "https://maker.ifttt.com/trigger/temp_goal/with/key/########?value1=";
 boolean msgSent = 0;
 
 void setup(){
@@ -279,7 +280,7 @@ void sendSlackMsg(int goal) {
     String value = String(goal);
     if((wifiMulti.run() == WL_CONNECTED)) {
         HTTPClient http;
-        http.begin("https://maker.ifttt.com/trigger/temp_goal/with/key/Na-nqM2lU1A6ZTH8QZq42?value1=" + value); //HTTP
+        http.begin(MSG_URL + value); //HTTP
         int httpCode = http.GET();
 
         if(httpCode > 0) {
