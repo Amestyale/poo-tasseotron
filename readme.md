@@ -63,3 +63,10 @@ Les pins des éléments sont modifiables, il faudra simplement penser à changer
 > :warning: Pour les pins en INPUT, il est nécessaire de faire le branchement sur un pin **ADC1**, les pins ADC2 en input et le module wifi ne peuvent pas fonctionner simultanément
 
 ![ESP32 pins](./esp32.png)
+### Code
+#### Constantes
+Comme mentionné ci-haut, pensez à mettre le bon numéros de pin dans les constantes associées. Concernant la jauge à led, il s'agit d'un tableau d'entiers : la première valeur correspond au pin de la led la plus basse, la dernière à la led la plus haute.
+
+#### Identifiants WIFI
+Le tasse-o-tron utilise une connexion wifi pour envoyer sa notification, il faut donc lui fournir l'identifiant et le mot de passe pour s'y connecter
+![Code wifi](./wifi.png)
